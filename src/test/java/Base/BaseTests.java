@@ -5,10 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import pages.PopupModal;
 
 public class BaseTests {
     private WebDriver driver;
     protected HomePage homePage;
+    protected PopupModal popupModal;
+
 
     @BeforeMethod
     public void setUp(){
@@ -16,11 +19,14 @@ public class BaseTests {
         driver = new ChromeDriver();
         driver.get("https://candymapper.com/");
         homePage = new HomePage(driver);
+        popupModal = new PopupModal(driver);
+        popupModal.closeModalVisible();
+
     }
-    @AfterMethod
-    public void closeTheChrome(){
-        if(driver!=null){
-            driver.quit();
-        }
-    }
+ //   @AfterMethod
+//    public void closeTheChrome(){
+//        if(driver!=null){
+//            driver.quit();
+//        }
+//    }
 }

@@ -12,12 +12,12 @@ public class JoinUsTests extends BaseTests {
 
     @Test
     public void testJoinUsLoginAndCreateAccountFlow() {
-
         JoinUsPage loginPage = homePage.clickJoinUsLink();
 
         loginPage.enterEmail("wrong@test.com")
                 .enterPassword("incorrectPassword")
                 .clickSignIn();
+
         Assert.assertTrue(
                 loginPage.isStillOnLoginPage(),
                 "Expected to remain on Login Page after invalid login"
@@ -33,7 +33,8 @@ public class JoinUsTests extends BaseTests {
 
         Assert.assertTrue(
                 createAccount.isStillOnCreateAccountPage(),
-                "Expected to remain on Create Account Page "
+                "Expected to remain on Create Account Page"
         );
     }
+
 }

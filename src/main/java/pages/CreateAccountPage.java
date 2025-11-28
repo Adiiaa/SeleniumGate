@@ -42,6 +42,7 @@ public class CreateAccountPage {
     }
 
     public boolean isStillOnCreateAccountPage(){
+
         return driver.getPageSource().contains("Create Account");
     }
 }

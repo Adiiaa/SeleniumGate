@@ -13,11 +13,16 @@ import java.util.stream.Collectors;
 
 public class HomePage {
     private WebDriver driver;
+    private WebDriverWait wait;
+
     private By JoisUsLink = By.linkText("JOIN US");
     private By countryDropdown = By.id("tCounty");
 
+
     public HomePage(WebDriver driver){
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
     }
     public void selectCountry(String countryName){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -39,4 +44,6 @@ public class HomePage {
     }
 
 
-}
+    }
+
+

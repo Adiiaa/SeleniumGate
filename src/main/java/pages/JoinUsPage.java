@@ -36,6 +36,7 @@ public class JoinUsPage {
 
     public boolean isStillOnLoginPage(){
         return driver.getPageSource().contains("Account sign in");
+
     }
 
     public CreateAccountPage clickCreateAccount(){
