@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,8 +26,10 @@ public class HomePage {
 
     }
     public void selectCountry(String countryName){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement dropdownOfCountry = wait.until(ExpectedConditions.visibilityOfElementLocated(countryDropdown));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement dropdownOfCountry = wait.until(ExpectedConditions.elementToBeClickable(By.id("tCounty")));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",dropdownOfCountry);
+
         Select country = new Select(dropdownOfCountry);
         country.selectByVisibleText(countryName);
 
