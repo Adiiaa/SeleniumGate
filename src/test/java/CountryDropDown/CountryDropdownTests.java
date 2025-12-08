@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class CountryDropDownTests extends BaseTests {
+public class CountryDropdownTests extends BaseTests {
     @Test
 
     public void testCountryDropdownSelection() {
