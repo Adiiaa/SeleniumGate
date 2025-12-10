@@ -8,7 +8,7 @@ import pages.HomePage;
 import pages.PopupModal;
 
 public class BaseTests {
-    private WebDriver driver;
+    protected WebDriver driver;
     protected HomePage homePage;
     protected PopupModal popupModal;
 
@@ -23,10 +23,10 @@ public class BaseTests {
         popupModal.closeModalVisible();
 
     }
- //   @AfterMethod
-//    public void closeTheChrome(){
-//        if(driver!=null){
-//            driver.quit();
-//        }
-//    }
+ @AfterMethod
+        public void closeTheChrome(){
+            if(driver!=null){
+                  driver.quit();
+       }
+   }
 }

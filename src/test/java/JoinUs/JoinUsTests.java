@@ -31,8 +31,7 @@ public class JoinUsTests extends BaseTests {
                 .enterPhone("1234567890")
                 .clickCreateAccount();
 
-        Assert.assertTrue(
-                createAccount.isStillOnCreateAccountPage(),
+        Assert.assertTrue(createAccount.isStillOnCreateAccountPage(),
                 "Expected to remain on Create Account Page"
         );
     }

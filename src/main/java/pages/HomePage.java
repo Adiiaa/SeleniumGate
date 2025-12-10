@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +18,9 @@ public class HomePage {
     private WebDriverWait wait;
 
     private By JoisUsLink = By.linkText("JOIN US");
-    private By countryDropdown = By.id("tCounty");
+    private By moreDropdown = By.cssSelector("a[data-aid=\"NAV_MORE\"]");
+    private By britishLink = By.cssSelector("a[href='https://www.bcs.org/']");
+
 
 
     public HomePage(WebDriver driver){
@@ -25,26 +28,31 @@ public class HomePage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     }
-    public void selectCountry(String countryName){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        WebElement dropdownOfCountry = wait.until(ExpectedConditions.elementToBeClickable(By.id("tCounty")));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);",dropdownOfCountry);
 
-        Select country = new Select(dropdownOfCountry);
-        country.selectByVisibleText(countryName);
-
+    public void clickBritishLink(){
+        WebElement british = wait.until(ExpectedConditions.elementToBeClickable(britishLink));
+        british.click();
     }
-    public List<String> getSelectedCountry() {
-        Select country = new Select(driver.findElement(countryDropdown));
-        List<WebElement> selectedOptions = country.getAllSelectedOptions();
-        return selectedOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+    public DropDownPage clickHomePage(){
+        return new DropDownPage(driver);
     }
-
 
     public JoinUsPage clickJoinUsLink(){
         driver.findElement(JoisUsLink).click();
         return new JoinUsPage(driver);
     }
+
+        public void openMoreDropdown(){
+            WebElement more = wait.until(ExpectedConditions.visibilityOfElementLocated(moreDropdown));
+            more.click();
+        }
+        public MoreDropdownPage clickDropdown(String linkText){
+            openMoreDropdown();
+            driver.findElement(By.xpath("//*[@id=\"more-68\"]/li[14]/a")).click();
+            return new MoreDropdownPage(driver);
+
+
+        }
 
 
     }
