@@ -19,12 +19,19 @@ public class HomePage {
 
     private By JoisUsLink = By.linkText("JOIN US");
     private By moreDropdown = By.cssSelector("a[data-aid=\"NAV_MORE\"]");
+    private By britishLink = By.cssSelector("a[href='https://www.bcs.org/']");
+
 
 
     public HomePage(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+    }
+
+    public void clickBritishLink(){
+        WebElement british = wait.until(ExpectedConditions.elementToBeClickable(britishLink));
+        british.click();
     }
     public DropDownPage clickHomePage(){
         return new DropDownPage(driver);
